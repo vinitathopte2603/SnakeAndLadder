@@ -5,3 +5,5 @@ echo "$var"
 
 INITIAL_POSITION=0;
 NUMBEROFPLAYER=1;
+
+randomDieMove=$((RANDOM%6+1))
