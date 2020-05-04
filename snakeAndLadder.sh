@@ -19,8 +19,11 @@ function moveCondition(){
 		echo $1=$INITIAL_POSITION;
 	elif [ $1 -ge $WINNING_POSITION ]
 	then
-		echo win;
-	fi 
+		echo win
+	elif [ $1 -gt $WINNING_POSITION ]
+	then
+		firstPlayerPosition=$(( $1 - $2 ))
+	fi
 }
 
 while [ $firstPlayerPosition -le $WINNING_POSITION ]
