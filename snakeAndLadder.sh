@@ -10,7 +10,8 @@ firstPlayerPosition=$INITIAL_POSITION;
 NOPLAY=0;
 LADDER=1;
 SNAKE=2; 
-
+diceCounter=0;
+declare -A position
 
 function moveCondition(){
 
@@ -29,6 +30,7 @@ function moveCondition(){
 while [ $firstPlayerPosition -le $WINNING_POSITION ]
 do
 	randomDieMove=$((RANDOM%6+1))
+	diceCounter=$(( $diceCounter+1 ))
 	Option=$((RANDOM%3))
 	case $Option in
 	$NOPLAY)
@@ -44,5 +46,11 @@ do
 
 	esac
 	 moveCondition $firstPlayerPosition $randomDieMove
-
+	position[$diceCounter]=$firstPlayerPosition
 done
+
+for dies in "${position[@]}"
+do
+	echo $dies "position : " ${position[$dies]}
+done
+
